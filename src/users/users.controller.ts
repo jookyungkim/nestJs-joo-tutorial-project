@@ -34,16 +34,16 @@ export class UsersController {
     return this.usersService.getAllUsers();
   }
 
-  @Get('/:id')
-  getUserById(@Param('id', ParseIntPipe) id: number): Promise<User> {
-    logger.debug('getUserById start');
-    return this.usersService.getUserById(id);
-  }
-
   @Post('/')
   createUser(@Body(ValidationPipe) createUser: CreateUserDto): Promise<User> {
     logger.debug('createUser start');
     return this.usersService.createUser(createUser);
+  }
+
+  @Get('/:id')
+  getUserById(@Param('id', ParseIntPipe) id: number): Promise<User> {
+    logger.debug('getUserById start');
+    return this.usersService.getUserById(id);
   }
 
   @Post('/login')
